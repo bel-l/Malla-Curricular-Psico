@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
-  <h1>Malla Curricular Psicología <span class="sticker">🐻</span></h1>
+  <h1>Malla Curricular Psicología</h1>
   <div id="malla-container"></div>
 
   <!-- Créditos Aprobados -->
@@ -20,6 +20,23 @@
       <p id="modalMensaje"></p>
     </div>
   </div>
+
+  <!-- Stickers visuales para algunos elementos -->
+  <template id="sticker-mapa">
+    {
+      "semestres": {
+        "Semestre 1": "🐻",
+        "Semestre 4": "🧚",
+        "Semestre 7": "💜"
+      },
+      "ramos": {
+        "Psicología": "🐻",
+        "Psicología Clínica": "💜",
+        "Psicología del Trabajo y las Organizaciones": "🧚",
+        "Seminario de Grado II": "🎤"
+      }
+    }
+  </template>
 
   <script src="script.js"></script>
 </body>
