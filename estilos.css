@@ -1,137 +1,211 @@
-/* Reset y estilo base */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+/* --- Variables de Colores y Estilos Globales --- */
+:root {
+    --color-fondo: #f0f4ff; /* Azul muy pálido */
+    --color-texto: #333;
+    --color-primario: #a3b8f5; /* Azul pastel */
+    --color-secundario: #c3aed6; /* Morado pastel */
+    --color-aprobado: #b8f5d3; /* Verde pastel */
+    --color-aprobado-texto: #1e6b41;
+    --color-bloqueado: #e0e0e0;
+    --sombra-caja: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --borde-radio: 12px;
+    --fuente-principal: 'Poppins', sans-serif;
 }
 
+/* --- Estilos Base y del Cuerpo --- */
 body {
-  background: linear-gradient(to right, #e3f2fd, #ede7f6);
-  color: #333;
-  padding: 20px;
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    margin: 0;
+    padding: 20px;
+    /* Patrón decorativo sutil con ositos y corazones */
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(195, 174, 214, 0.1) 0%, rgba(195, 174, 214, 0) 25%),
+        radial-gradient(circle at 80% 70%, rgba(163, 184, 245, 0.1) 0%, rgba(163, 184, 245, 0) 25%);
 }
 
-h1 {
-  text-align: center;
-  color: #6a1b9a;
-  font-size: 28px;
-  margin-bottom: 20px;
+* {
+    box-sizing: border-box;
 }
 
-.sticker {
-  font-size: 24px;
-  margin-left: 8px;
+/* --- Encabezado --- */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--color-secundario);
 }
 
-#malla-container {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 20px;
-  padding: 10px;
+header h1 {
+    font-weight: 600;
+    margin: 0;
 }
 
+header p {
+    font-weight: 300;
+    margin-top: 5px;
+}
+
+/* --- Contenedor Principal de la Malla --- */
+.malla-curricular {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas */
+    padding: 20px 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primario) var(--color-fondo);
+}
+
+/* --- Estilos de cada Semestre --- */
 .semestre {
-  min-width: 200px;
-  background-color: #ffffffd0;
-  border-radius: 16px;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(106, 27, 154, 0.1);
-  position: relative;
+    flex: 0 0 220px; /* Ancho fijo para cada columna de semestre */
+    background-color: white;
+    padding: 15px;
+    border-radius: var(--borde-radio);
+    box-shadow: var(--sombra-caja);
+    border-top: 5px solid var(--color-primario);
 }
 
 .semestre h2 {
-  text-align: center;
-  font-size: 18px;
-  color: #512da8;
-  margin-bottom: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--color-secundario);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
 }
 
-.semestre h2::after {
-  content: " ✨";
-  font-size: 16px;
-  display: inline-block;
-  margin-left: 4px;
+.semestre ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
+/* --- Estilos de cada Ramo --- */
 .ramo {
-  background-color: #d1c4e9;
-  color: #333;
-  padding: 8px;
-  border-radius: 10px;
-  margin: 5px 0;
-  cursor: pointer;
-  transition: 0.3s;
-  position: relative;
+    background-color: #f8faff;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primario);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
 }
 
 .ramo:hover {
-  background-color: #b39ddb;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
+.ramo .nombre {
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
+.ramo .creditos {
+    font-size: 0.75em;
+    font-weight: 300;
+    color: #888;
+    margin-top: 5px;
+    display: block;
+}
+
+/* --- Estados de los Ramos --- */
+
+/* Ramo Aprobado */
 .ramo.aprobado {
-  background-color: #9575cd !important;
-  text-decoration: line-through;
-  color: #fff;
+    background-color: var(--color-aprobado);
+    border-left-color: var(--color-aprobado-texto);
 }
 
+.ramo.aprobado .nombre {
+    text-decoration: line-through;
+    color: #555;
+}
+
+/* Ramo Bloqueado */
 .ramo.bloqueado {
-  background-color: #e0e0e0;
-  color: #888;
-  cursor: not-allowed;
+    background-color: var(--color-bloqueado);
+    border-left-color: #aaa;
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
-.ramo::after {
-  content: " 🐻";
-  position: absolute;
-  right: 8px;
+.ramo.bloqueado::after {
+    content: '🔒'; /* Ícono de candado */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 1em;
 }
 
-/* Créditos */
-#creditos {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  background-color: #ce93d8;
-  padding: 10px 20px;
-  border-radius: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  font-weight: bold;
-  color: #fff;
+/* --- Contador de Créditos --- */
+.creditos-contador {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: var(--sombra-caja);
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: transform 0.3s ease;
 }
 
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 10;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.4);
-  justify-content: center;
-  align-items: center;
+.creditos-contador:hover {
+    transform: scale(1.05);
 }
 
-.modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 400px;
-  text-align: center;
-  box-shadow: 0 0 10px #333;
+/* --- Botón de Reinicio --- */
+.controles {
+    text-align: center;
+    margin-top: 20px;
 }
 
-#closeModal {
-  float: right;
-  font-size: 20px;
-  cursor: pointer;
-  color: #999;
+#reiniciar-progreso {
+    background-color: var(--color-secundario);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--fuente-principal);
+    font-weight: 600;
+    transition: background-color 0.2s ease;
 }
 
-@media screen and (max-width: 768px) {
-  .semestre {
-    min-width: 90%;
-  }
+#reiniciar-progreso:hover {
+    background-color: #ab92c5; /* Tono más oscuro de morado */
+}
+
+/* --- Diseño Responsivo --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .malla-curricular {
+        flex-direction: column; /* Apila los semestres verticalmente */
+        overflow-x: hidden;
+        gap: 25px;
+    }
+
+    .semestre {
+        flex: 1 1 auto; /* Permite que crezca y ocupe el ancho */
+        width: 100%;
+    }
+
+    .creditos-contador {
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.8em;
+        padding: 10px 15px;
+    }
 }
