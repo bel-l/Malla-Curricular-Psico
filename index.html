@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla Interactiva de Psicología</title>
-    <link rel="stylesheet" href="estilos.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Psicología</title>
+  <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
+  <h1>Malla Curricular Psicología <span class="sticker">🐻</span></h1>
+  <div id="malla-container"></div>
 
-    <header>
-        <h1>Malla Curricular Interactiva</h1>
-        <p>Psicología  psikologystudies.co</p>
-    </header>
+  <!-- Créditos Aprobados -->
+  <div id="creditos">Créditos Aprobados: 0 SCT 💜</div>
 
-    <main id="malla-curricular" class="malla-curricular">
-        </main>
-
-    <div class="controles">
-        <button id="reiniciar-progreso">Reiniciar Progreso</button>
+  <!-- Modal de bloqueo -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <p id="modalMensaje"></p>
     </div>
+  </div>
 
-    <div id="creditos-contador" class="creditos-contador">
-        Créditos Aprobados: <span id="creditos-totales">0</span> SCT
-    </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
